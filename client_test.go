@@ -1728,6 +1728,24 @@ var _ = Describe("RedisMock", func() {
 			})
 		})
 
+		It("ZAddArgs", func() {
+			operationIntCmd(clientMock, func() *ExpectedInt {
+				return clientMock.ExpectZAddArgs("zset", redis.ZAddArgs{
+					GT: true,
+					Members: []redis.Z{
+						{Member: "a", Score: 1},
+					},
+				})
+			}, func() *redis.IntCmd {
+				return client.ZAddArgs(ctx, "zset", redis.ZAddArgs{
+					GT: true,
+					Members: []redis.Z{
+						{Member: "a", Score: 1},
+					},
+				})
+			})
+		})
+
 		It("ZIncr", func() {
 			operationFloatCmd(clientMock, func() *ExpectedFloat {
 				return clientMock.ExpectZIncr("zset", &redis.Z{

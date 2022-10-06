@@ -180,6 +180,7 @@ type baseMock interface {
 	ExpectZAddCh(key string, members ...*redis.Z) *ExpectedInt
 	ExpectZAddNXCh(key string, members ...*redis.Z) *ExpectedInt
 	ExpectZAddXXCh(key string, members ...*redis.Z) *ExpectedInt
+	ExpectZAddArgs(key string, args redis.ZAddArgs) *ExpectedInt
 	ExpectZIncr(key string, member *redis.Z) *ExpectedFloat
 	ExpectZIncrNX(key string, member *redis.Z) *ExpectedFloat
 	ExpectZIncrXX(key string, member *redis.Z) *ExpectedFloat
